@@ -2,6 +2,16 @@
     box-sizing: border-box;
 }
 
+/* Works on Firefox */
+* {
+    scrollbar-width: none;
+  }
+  
+  /* Works on Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 0;
+  }
+
 html {
     font-family: 'Recursive', sans-serif;
 }
@@ -167,6 +177,7 @@ body {
     align-items: center;
     width: 100%;
     height: calc(17vw);
+    max-height: 77px;
     background-color: #fff;
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
@@ -289,7 +300,7 @@ body {
 }
 
 footer {
-    width: 100%;
+    width: 90%;
     padding: 18px 0px;
     background-color: #fff;
     display: flex;
@@ -308,6 +319,8 @@ footer span {
 }
 
 
+
+  
 
 
 

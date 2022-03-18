@@ -7,7 +7,7 @@ let decks = data.decks
 
 export default function HomeScreen(props) {
     const {activeDeck, setDeck} = props
-    const [input, setinput] = React.useState('dropDown')
+    const [input, setInput] = React.useState('dropDown')
     const [buttonAction, setButtonAction] = React.useState("next")
     const [buttonContent, setButtonContent] = React.useState("Next")
 
@@ -28,11 +28,7 @@ export default function HomeScreen(props) {
         if(buttonAction === "next"){
             return(
                 <button action={buttonAction} className="control-button" onClick={()=>{
-                    checkDeck()
-                    setButtonAction("start")
-                    setButtonContent("Start Recall!")
-                    setinput("zapGoals")
-    
+                    checkDeck(setInput, setButtonAction, setButtonContent)    
                 }}>{buttonContent}</button>
             )
         } else if(buttonAction === "start") {
@@ -96,18 +92,21 @@ function selectDecks(deckName) {
     document.querySelector(".dropdown .select span").innerHTML = deckName
 }
 
-function checkDeck() {
+function checkDeck(setInput, setButtonAction, setButtonContent) {
     const selectedDeck = document.querySelector(".dropdown .select span").innerHTML
     if (selectedDeck === "Choose your deck") { 
         alert('Please, choose a deck.')
     } else {
+        setButtonAction("start")
+        setButtonContent("Start Recall!")
+        setInput("zapGoals")
         chooseDeckJSON(selectedDeck);
     }
 }
 
 function Goals() {
     return(
-        <input className="zaps-input" type="text" placeholder="How many Zaps you wanna get?"/>
+        <input className="zaps-input" type="number"  placeholder="How many Zaps you wanna get?"/>
     )
 }
 
@@ -123,6 +122,7 @@ function chooseDeckJSON(selectedDeck) {
 
 function updadeDeckJSON(activeDeck, setDeck) {
     const zapGoals = document.querySelector('.zaps-input').value
+    // if(Number.isInteger(zapGoals) )
     decks.forEach(deck => {
         if (deck.isChosen === true) {
             deck.goal = zapGoals
