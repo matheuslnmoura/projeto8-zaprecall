@@ -56,7 +56,7 @@ function EndGameMessage(props) {
     })
     
     if (gameStatus === "finished") {
-        if(rightAnswers >= goal) {
+        if(rightAnswers >= goal && wrongAnswers === 0) {
             return (
                 <div className="end-game-container">
                     <div className="title">
