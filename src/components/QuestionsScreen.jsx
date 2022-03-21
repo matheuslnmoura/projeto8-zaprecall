@@ -7,42 +7,42 @@ import Footer from './Footer'
 
 
 export default function QuestionsScreen(props) {
-    const [answers, setAnswers] = React.useState([{wrong: 0, medium: 0, right: 0}])
-    // function updateAnswers(newAnswers) {
-    //     setAnswers(newAnswers)
-    // }
-    console.log(answers)
-    const{activeDeck} = props
+    const [answersValue, setAnswersValue] = React.useState([])
+    const{activeDeck, setDeck, setScreen} = props
     return(
         <div className="question-screen">
             <div className="container">
                 <Logo />
                 <div className="questions">
-                    {renderQuestions(activeDeck, setAnswers)}
+                    {renderQuestions(activeDeck, answersValue, setAnswersValue)}
                 </div>
             </div>
-            <Footer />
+            <Footer answersValue = {answersValue} activeDeck = {activeDeck} setDeck = {setDeck} setScreen = {setScreen} />
         </div>
     )
 }
 
-function renderQuestions(activeDeck, setAnswers) {
-    const deck = activeDeck[0]
-    console.log(deck)
-        const {questions} = deck
-        return questions.map((element, index)=>{
-            return (
-                <>
-                    <Question index = {index} question = {element.question} answer = {element.answer} setAnswers = {setAnswers} key = {element.question + index} />
+function renderQuestions(activeDeck, answersValue, setAnswersValue) {
+    const deck = activeDeck[0]  
+    let {questions} = deck
+    questions = questions.sort(comparator)
+    return questions.map((element, index)=>{
+        return (
+            <>
+                <Question index = {index} question = {element.question} answer = {element.answer} answersValue = {answersValue} setAnswersValue = {setAnswersValue}  />
 
-                </>
+            </>
 
-            )
-        })
+        )
+    })
+}
+
+function comparator() { 
+	return Math.random() - 0.5; 
 }
 
 function Question(props) {
-    const {index, question, answer, setAnswers} = props
+    const {index, question, answer, answersValue, setAnswersValue} = props
     const[questionState, setQuestionState] = React.useState("closed")
     if (questionState === "closed"){
         return (  
@@ -51,11 +51,11 @@ function Question(props) {
 
     } else if (questionState === 'open') {
         return (
-            <OpenQuestion currentState = {questionState} state = {setQuestionState} index = {index}  question = {question}  answer = {answer} />
+            <OpenQuestion currentState = {questionState} state = {setQuestionState} answersValue = {answersValue} setAnswersValue = {setAnswersValue} index = {index}  question = {question}  answer = {answer} />
         )
     } else {
         return (  
-            <AnsweredQuestion currentState = {questionState} state = {setQuestionState} setAnswers = {setAnswers} index = {index}  question = {question}  answer = {answer}  />
+            <AnsweredQuestion currentState = {questionState} state = {setQuestionState} setAnswersValue = {setAnswersValue} index = {index}  question = {question}  answer = {answer}  />
         )
     }
 
@@ -63,11 +63,11 @@ function Question(props) {
 
 function ClosedQuestion(props) {
     return (
-        <div className="card-container">
+        <div className="card-container" key = {(props.index + 1) + props.question}>
             <div className="question" onClick = {()=>{
                 props.state("open")
                 }}>
-                <span>Pergunta {props.index + 1}</span>
+                <span>Question {props.index + 1}</span>
                 <ion-icon className="ion-icon" name="play-outline"></ion-icon>
             </div>
         </div>
@@ -75,6 +75,7 @@ function ClosedQuestion(props) {
 }
 
 function OpenQuestion(props) {
+    const {answersValue, setAnswersValue} = props
     return(
         <>
         <div className="card-container">
@@ -98,17 +99,23 @@ function OpenQuestion(props) {
                     <div className="action red" onClick = {(event)=>{
                         event.stopPropagation()
                         props.state("answered-red")
+
+                        setAnswersValue([...answersValue, 'close-circle'])
                         }}>Didn't Remember
                     </div>
                     <div className="action orange" onClick = {(event)=>{
                         event.stopPropagation()
                         props.state("answered-orange")
+
+                        setAnswersValue([...answersValue, 'help-circle'])
                         }}>
                         Almost Didn't Remember
                     </div>
                     <div className="action green" onClick = {(event)=>{
                         event.stopPropagation()
                         props.state("answered-green")
+
+                        setAnswersValue([...answersValue, 'checkmark-circle'])
                         }}>Zap!
                     </div>
                 </div>
@@ -122,21 +129,16 @@ function OpenQuestion(props) {
 
 
 function AnsweredQuestion(props) {
-    const {setAnswers} = props
-    let answersObj = {wrong: 0, medium: 0, right: 0}
     let iconName
 
     if(props.currentState === 'answered-red') {
-        answersObj.wrong ++
-        setAnswers(answersObj)
+        
         iconName = "close-circle"
     } else if(props.currentState === 'answered-orange') {
-        answersObj.medium ++
-        setAnswers(answersObj)
+        
         iconName = "help-circle"
     } else if(props.currentState === 'answered-green') {
-        answersObj.right ++
-        setAnswers(answersObj)
+        
         iconName = "checkmark-circle"
     }
     return (

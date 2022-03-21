@@ -10,9 +10,9 @@ function App() {
     return(
         <div className="app-container">
             {activeScreen === "HomeScreen" ? 
-                <HomeScreen setScreen = {setActiveScreen} activeDeck = {activeDeck} setDeck = {setActiveDeck}/> :
+                <HomeScreen setScreen = {setActiveScreen} activeDeck = {activeDeck} setDeck = {setActiveDeck} /> :
 
-                <QuestionsScreen activeDeck = {activeDeck} />
+                <QuestionsScreen activeDeck = {activeDeck} setDeck = {setActiveDeck} setScreen = {setActiveScreen}  />
             }
 
         </div>

@@ -92,6 +92,24 @@
                     "answer": "Dizer para o React quais informações quando atualizadas devem renderizar a tela novamente"
                 }
             ]
+        }, 
+
+        {
+            "name": "short test",
+            "isChosen": false,
+            "goal": 0,
+            "questions": [
+                {
+                    "question": "O que é JSX?",
+                    "answer": "Uma extensão de linguagem do JavaScript"
+                },
+
+                {
+                    "question": "O React é __ ",
+                    "answer": "Uma biblioteca JavaScript para construção de interfaces"
+                }
+
+            ]
         }
        
 

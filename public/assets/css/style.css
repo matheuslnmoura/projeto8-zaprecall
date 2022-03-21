@@ -169,6 +169,7 @@ body {
     position: relative;
     height: fit-content;
     margin-bottom: 10px;
+    transition: all ease .5s;
 }
 
 .question {
@@ -176,8 +177,8 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: calc(17vw);
-    max-height: 77px;
+    min-height: calc(17vw);
+    height: fit-content;
     background-color: #fff;
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
@@ -220,6 +221,7 @@ body {
     transform: rotateY(180deg);
     display: flex;
     flex-direction: column;
+    height: fit-content;
 }
 
 .question.open.back .actions {
@@ -299,6 +301,8 @@ body {
     font-size: 30px;
 }
 
+
+
 footer {
     width: 90%;
     padding: 18px 0px;
@@ -313,9 +317,65 @@ footer {
     left: 0;
 }
 
-footer span {
+footer .answers-counter {
     text-transform: uppercase;
     font-size: 20px;
+    display: block;
+}
+
+footer .icons-container{
+    width: 80%;
+    margin: auto;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+
+footer .icons-container .close-circle {
+    color: #FF3030;
+    font-size: 22px;
+}
+
+footer .icons-container .help-circle {
+    color: #FF922E;
+    font-size: 22px;
+}
+
+footer .icons-container .checkmark-circle {
+    color: #2FBE34;
+    font-size: 22px;
+}
+
+footer .end-game-container {
+    width: 80%;
+    margin: auto;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 3px;
+}
+
+footer .end-game-container .title,
+footer .end-game-container span {
+    text-align: center;
+}
+
+footer .end-game-container span {
+    margin-top: 10px;
+}
+
+footer button {
+    width: 141px;
+    height: 31px;
+    margin-top: 6px;
+    background-color: #fff;
+    border: 1px solid #D70900;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    color: #D70900;
+    font-family: 'Recursive', sans-serif;
 }
 
 

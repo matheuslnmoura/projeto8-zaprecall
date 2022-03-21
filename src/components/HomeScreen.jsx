@@ -121,8 +121,14 @@ function chooseDeckJSON(selectedDeck) {
 }
 
 function updadeDeckJSON(activeDeck, setDeck) {
-    const zapGoals = document.querySelector('.zaps-input').value
-    // if(Number.isInteger(zapGoals) )
+    let zapGoals = document.querySelector('.zaps-input').value
+    if(zapGoals === "") {
+        zapGoals = 0
+    } else if (zapGoals < 0) {
+        zapGoals = zapGoals * (-1)
+    }
+    zapGoals = parseInt(zapGoals)
+
     decks.forEach(deck => {
         if (deck.isChosen === true) {
             deck.goal = zapGoals
