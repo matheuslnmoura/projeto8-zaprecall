@@ -12,7 +12,7 @@
 
                 {
                     "question": "O React é __ ",
-                    "answer": "Uma biblioteca JavaScript para construção de interfaces aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    "answer": "Uma biblioteca JavaScript para construção de interfaces"
                 },
 
                 {
@@ -48,7 +48,7 @@
         }, 
 
         {
-            "name": "Not React",
+            "name": "Another Deck",
             "isChosen": false,
             "goal": 0,
             "questions": [
