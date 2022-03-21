@@ -44,13 +44,7 @@ body {
     background-color: #FB6B6B;
 }
 
-.logo-area span {
-    font-size: 25px;
-    font-weight: 400;
-    color: #fff;
-    font-family: 'Righteous', cursive;
-    margin-top: 10px;
-}
+
 
 .home-screen .logo-area {
     width: fit-content;
@@ -60,13 +54,27 @@ body {
     align-items: center;
 }
 
+.logo-area img {
+    width: 136px;
+    height: auto;
+}
+
+.logo-area span {
+    font-size: 36px;
+    font-weight: 400;
+    color: #fff;
+    font-family: 'Righteous', cursive;
+    margin-top: 10px;
+}
+
 .home-screen .dropdown {
     position: relative;
+    width: 60%;
 }
 
 .home-screen .dropdown .select  {
-    width: 141px;
-    height: 25px;
+    width: 100%;
+    height: 40px;
     background-color: #fff;
     display: flex;
     justify-content: space-between;
@@ -79,7 +87,7 @@ body {
 }
 
 .home-screen .dropdown .expand {
-    width: 141px;
+    width: 100%;
     background-color: #fff;
     display: flex;
     justify-content: center;
@@ -93,8 +101,8 @@ body {
 }
 
 .home-screen .zaps-input {
-    width: 141px;
-    height: 25px;
+    width: 60%;
+    height: 40px;
     background-color: #fff;
     display: flex;
     justify-content: space-between;
@@ -113,8 +121,8 @@ body {
 }
 
 .control-button {
-    width: 141px;
-    height: 31px;
+    width: 60%;
+    height: 40px;
     margin-top: 6px;
     background-color: #fff;
     border: 1px solid #D70900;
@@ -159,6 +167,7 @@ body {
 
 .question-screen .logo-area img {
     margin-right: 8px;
+    width: 60px;
 }
 
 .questions {
@@ -177,7 +186,7 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    min-height: calc(17vw);
+    min-height: 65px;
     height: fit-content;
     background-color: #fff;
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
@@ -201,7 +210,7 @@ body {
 
 .question.open {
     background-color: #FFFFD4;
-    min-height: 34vw;
+    min-height: 131px;
     height:fit-content;
     position:relative;
     top: 0;

@@ -53,8 +53,6 @@ export default function HomeScreen(props) {
 
 }
 
-
-
 function DropDownList() {
     return(
         <div className="dropdown">

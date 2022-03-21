@@ -8,13 +8,13 @@ import Footer from './Footer'
 
 export default function QuestionsScreen(props) {
     const [answersValue, setAnswersValue] = React.useState([])
-    const{activeDeck, setDeck, setScreen} = props
+    const{activeDeck, setDeck, setScreen, questions} = props
     return(
         <div className="question-screen">
             <div className="container">
                 <Logo />
                 <div className="questions">
-                    {renderQuestions(activeDeck, answersValue, setAnswersValue)}
+                    {renderQuestions(activeDeck, questions, answersValue, setAnswersValue)}
                 </div>
             </div>
             <Footer answersValue = {answersValue} activeDeck = {activeDeck} setDeck = {setDeck} setScreen = {setScreen} />
@@ -22,10 +22,7 @@ export default function QuestionsScreen(props) {
     )
 }
 
-function renderQuestions(activeDeck, answersValue, setAnswersValue) {
-    const deck = activeDeck[0]  
-    let {questions} = deck
-    questions = questions.sort(comparator)
+function renderQuestions(activeDeck, questions, answersValue, setAnswersValue) {
     return questions.map((element, index)=>{
         return (
             <>
@@ -37,9 +34,7 @@ function renderQuestions(activeDeck, answersValue, setAnswersValue) {
     })
 }
 
-function comparator() { 
-	return Math.random() - 0.5; 
-}
+
 
 function Question(props) {
     const {index, question, answer, answersValue, setAnswersValue} = props
